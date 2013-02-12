@@ -1,6 +1,34 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[s S1025 `i 1 ]
-[n S1025 __timer0_thread_struct data ]
+"17327 /Applications/microchip/xc8/v1.12/include/pic18f26j50.h
+[v _TRISC3 `Vb ~T0 @X0 0 e@31907 ]
+"17329
+[v _TRISC4 `Vb ~T0 @X0 0 e@31908 ]
+"11629
+[v _SSPSTAT `Vuc ~T0 @X0 0 e@4039 ]
+"11392
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
+"12638
+[v _SSPADD `Vuc ~T0 @X0 0 e@4040 ]
+[t ~ __deprecated__ ]
+[t T63 __deprecated__ ]
+"16945
+[v _SEN `Vb ~T63 @X0 0 e@32296 ]
+"16607
+[v _PEN `Vb ~T63 @X0 0 e@32298 ]
+"16833
+[v _RSEN `Vb ~T63 @X0 0 e@32297 ]
+"15255
+[v _ACKDT `Vb ~T63 @X0 0 e@32301 ]
+"15261
+[v _ACKEN `Vb ~T63 @X0 0 e@32300 ]
+"10973
+[v _SSPCON2 `Vuc ~T0 @X0 0 e@4037 ]
+"12875
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
+"15421
+[v _BF `Vb ~T63 @X0 0 e@32312 ]
+"16737
+[v _RCEN `Vb ~T63 @X0 0 e@32299 ]
 [; ;pic18f26j50.h: 44: extern volatile unsigned char RPOR0 @ 0xEC6;
 "46 /Applications/microchip/xc8/v1.12/include/pic18f26j50.h
 [; ;pic18f26j50.h: 46: asm("RPOR0 equ 0EC6h");
@@ -5432,7 +5460,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18f26j50.h: 15130: unsigned SP3 :1;
 [; ;pic18f26j50.h: 15131: unsigned SP4 :1;
 [; ;pic18f26j50.h: 15132: unsigned :2;
-[; ;pic18f26j50.h: 15133: unsigned STKOVF :1;
+[; ;pic18f26j50.h: 15133: unsigned STKFUL :1;
 [; ;pic18f26j50.h: 15134: };
 [; ;pic18f26j50.h: 15135: } STKPTRbits_t;
 [; ;pic18f26j50.h: 15136: extern volatile STKPTRbits_t STKPTRbits @ 0xFFC;
@@ -6376,7 +6404,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18f26j50.h: 17061: extern volatile __bit START1 @ (((unsigned) &SSP1STAT)*8) + 3;
 [; ;pic18f26j50.h: 17063: extern volatile __bit START2 @ (((unsigned) &SSP2STAT)*8) + 3;
 [; ;pic18f26j50.h: 17065: extern volatile __bit STKFUL @ (((unsigned) &STKPTR)*8) + 7;
-[; ;pic18f26j50.h: 17067: extern volatile __bit STKOVF @ (((unsigned) &STKPTR)*8) + 7;
+[; ;pic18f26j50.h: 17067: extern volatile __bit STKFUL @ (((unsigned) &STKPTR)*8) + 7;
 [; ;pic18f26j50.h: 17069: extern volatile __bit STKUNF @ (((unsigned) &STKPTR)*8) + 6;
 [; ;pic18f26j50.h: 17071: extern volatile __bit STOP @ (((unsigned) &SSP1STAT)*8) + 4;
 [; ;pic18f26j50.h: 17073: extern volatile __bit STOP1 @ (((unsigned) &SSP1STAT)*8) + 4;
@@ -6637,6 +6665,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18f26j50.h: 17583: extern volatile __bit nWRITE @ (((unsigned) &SSP1STAT)*8) + 2;
 [; ;pic18f26j50.h: 17585: extern volatile __bit nWRITE1 @ (((unsigned) &SSP1STAT)*8) + 2;
 [; ;pic18f26j50.h: 17587: extern volatile __bit nWRITE2 @ (((unsigned) &SSP2STAT)*8) + 2;
+[; ;pic18.h: 18: __attribute__((__unsupported__("The flash_write routine is no longer supported. Please use the peripheral library functions: WriteBytesFlash, WriteBlockFlash or WriteWordFlash"))) void flash_write(const unsigned char *, unsigned int, __far unsigned c
+[; ;pic18.h: 144: extern void _delay(unsigned long);
+[; ;pic18.h: 146: extern void _delaywdt(unsigned long);
+[; ;pic18.h: 148: extern void _delay3(unsigned char);
 [; ;adc.h: 2008: union ADCResult
 [; ;adc.h: 2009: {
 [; ;adc.h: 2010: int lr;
@@ -7479,10 +7511,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xlcd.h: 140: extern void DelayFor18TCY(void);
 [; ;xlcd.h: 141: extern void DelayPORXLCD(void);
 [; ;xlcd.h: 142: extern void DelayXLCD(void);
-[; ;pic18.h: 18: __attribute__((__unsupported__("The flash_write routine is no longer supported. Please use the peripheral library functions: WriteBytesFlash, WriteBlockFlash or WriteWordFlash"))) void flash_write(const unsigned char *, unsigned int, __far unsigned c
-[; ;pic18.h: 144: extern void _delay(unsigned long);
-[; ;pic18.h: 146: extern void _delaywdt(unsigned long);
-[; ;pic18.h: 148: extern void _delay3(unsigned char);
+[; ;adcHelper.h: 20: void adcInit();
+[; ;adcHelper.h: 28: void adcIntHandler();
+[; ;adcHelper.h: 37: void adcReadyNextRead();
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -7513,27 +7544,280 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list);
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;timer0_thread.h: 1: typedef struct __timer0_thread_struct {
-[; ;timer0_thread.h: 3: int data;
-[; ;timer0_thread.h: 4: } timer0_thread_struct;
-[; ;timer0_thread.h: 6: int timer0_lthread(timer0_thread_struct *,int,int,unsigned char*);
-"9 ../src/timer0_thread.c
-[v _timer0_lthread `(i ~T0 @X0 1 ef4`*S1025`i`i`*uc ]
+[; ;i2cMaster.h: 23: void I2CInit(void);
+[; ;i2cMaster.h: 31: void I2CStart();
+[; ;i2cMaster.h: 39: void I2CStop();
+[; ;i2cMaster.h: 46: void I2CRestart();
+[; ;i2cMaster.h: 53: void I2CAck();
+[; ;i2cMaster.h: 60: void I2CNak();
+[; ;i2cMaster.h: 67: void I2CWait();
+[; ;i2cMaster.h: 76: void I2CSend(unsigned char dat);
+[; ;i2cMaster.h: 83: unsigned char I2CRead(void);
+[; ;i2cMaster.h: 86: unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress);
+[; ;i2cMaster.h: 91: void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress);
+"9 ../src/i2cMaster.c
+[v _I2CInit `(v ~T0 @X0 1 ef ]
 {
-[; ;timer0_thread.c: 9: int timer0_lthread(timer0_thread_struct *tptr, int msgtype, int length, unsigned char *msgbuffer) {
-[e :U _timer0_lthread ]
-[v _tptr `*S1025 ~T0 @X0 1 r1 ]
-[v _msgtype `i ~T0 @X0 1 r2 ]
-[v _length `i ~T0 @X0 1 r3 ]
-[v _msgbuffer `*uc ~T0 @X0 1 r4 ]
+[; ;i2cMaster.c: 9: void I2CInit(void){
+[e :U _I2CInit ]
 [f ]
+[; ;i2cMaster.c: 10: TRISC3 = 1;
 "10
-[v _msgval `*ui ~T0 @X0 1 a ]
-[; ;timer0_thread.c: 10: unsigned int *msgval;
-[; ;timer0_thread.c: 12: msgval = (unsigned int *) msgbuffer;
+[e = _TRISC3 -> -> 1 `i `b ]
+[; ;i2cMaster.c: 11: TRISC4 = 1;
+"11
+[e = _TRISC4 -> -> 1 `i `b ]
+[; ;i2cMaster.c: 12: SSPSTAT |= 0x80;
 "12
-[e = _msgval -> _msgbuffer `*ui ]
-[; ;timer0_thread.c: 16: }
-"16
+[e =| _SSPSTAT -> -> 128 `i `uc ]
+[; ;i2cMaster.c: 13: SSPCON1 = 0x28;
+"13
+[e = _SSPCON1 -> -> 40 `i `uc ]
+[; ;i2cMaster.c: 14: SSPADD = 0x28;
+"14
+[e = _SSPADD -> -> 40 `i `uc ]
+[; ;i2cMaster.c: 15: }
+"15
+[e :UE 1025 ]
+}
+"23
+[v _I2CStart `(v ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 23: void I2CStart(){
+[e :U _I2CStart ]
+[f ]
+[; ;i2cMaster.c: 24: SEN = 1;
+"24
+[e = _SEN -> -> 1 `i `b ]
+[; ;i2cMaster.c: 25: while(SEN);
+"25
+[e $U 1027  ]
+[e :U 1028 ]
+[e :U 1027 ]
+[e $ _SEN 1028  ]
+[e :U 1029 ]
+[; ;i2cMaster.c: 27: }
+"27
 [e :UE 1026 ]
+}
+"35
+[v _I2CStop `(v ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 35: void I2CStop(){
+[e :U _I2CStop ]
+[f ]
+[; ;i2cMaster.c: 36: PEN = 1;
+"36
+[e = _PEN -> -> 1 `i `b ]
+[; ;i2cMaster.c: 37: while(PEN);
+"37
+[e $U 1031  ]
+[e :U 1032 ]
+[e :U 1031 ]
+[e $ _PEN 1032  ]
+[e :U 1033 ]
+[; ;i2cMaster.c: 39: }
+"39
+[e :UE 1030 ]
+}
+"47
+[v _I2CRestart `(v ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 47: void I2CRestart(){
+[e :U _I2CRestart ]
+[f ]
+[; ;i2cMaster.c: 48: RSEN = 1;
+"48
+[e = _RSEN -> -> 1 `i `b ]
+[; ;i2cMaster.c: 49: while(RSEN);
+"49
+[e $U 1035  ]
+[e :U 1036 ]
+[e :U 1035 ]
+[e $ _RSEN 1036  ]
+[e :U 1037 ]
+[; ;i2cMaster.c: 50: }
+"50
+[e :UE 1034 ]
+}
+"58
+[v _I2CAck `(v ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 58: void I2CAck(){
+[e :U _I2CAck ]
+[f ]
+[; ;i2cMaster.c: 59: ACKDT = 0;
+"59
+[e = _ACKDT -> -> 0 `i `b ]
+[; ;i2cMaster.c: 60: ACKEN = 1;
+"60
+[e = _ACKEN -> -> 1 `i `b ]
+[; ;i2cMaster.c: 61: while(ACKEN);
+"61
+[e $U 1039  ]
+[e :U 1040 ]
+[e :U 1039 ]
+[e $ _ACKEN 1040  ]
+[e :U 1041 ]
+[; ;i2cMaster.c: 62: }
+"62
+[e :UE 1038 ]
+}
+"70
+[v _I2CNak `(v ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 70: void I2CNak(){
+[e :U _I2CNak ]
+[f ]
+[; ;i2cMaster.c: 71: ACKDT = 1;
+"71
+[e = _ACKDT -> -> 1 `i `b ]
+[; ;i2cMaster.c: 72: ACKEN = 1;
+"72
+[e = _ACKEN -> -> 1 `i `b ]
+[; ;i2cMaster.c: 73: while(ACKEN);
+"73
+[e $U 1043  ]
+[e :U 1044 ]
+[e :U 1043 ]
+[e $ _ACKEN 1044  ]
+[e :U 1045 ]
+[; ;i2cMaster.c: 74: }
+"74
+[e :UE 1042 ]
+}
+"82
+[v _I2CWait `(v ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 82: void I2CWait(){
+[e :U _I2CWait ]
+[f ]
+[; ;i2cMaster.c: 83: while ( ( SSPCON2 & 0x1F ) || ( SSPSTAT & 0x04 ) );
+"83
+[e $U 1047  ]
+[e :U 1048 ]
+[e :U 1047 ]
+[e $ || != & -> _SSPCON2 `i -> 31 `i -> 0 `i != & -> _SSPSTAT `i -> 4 `i -> 0 `i 1048  ]
+[e :U 1049 ]
+[; ;i2cMaster.c: 85: }
+"85
+[e :UE 1046 ]
+}
+"94
+[v _I2CSend `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;i2cMaster.c: 94: void I2CSend(unsigned char dat){
+[e :U _I2CSend ]
+[v _dat `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;i2cMaster.c: 95: SSPBUF = dat;
+"95
+[e = _SSPBUF _dat ]
+[; ;i2cMaster.c: 96: while(BF);
+"96
+[e $U 1051  ]
+[e :U 1052 ]
+[e :U 1051 ]
+[e $ _BF 1052  ]
+[e :U 1053 ]
+[; ;i2cMaster.c: 97: I2CWait();
+"97
+[e ( _I2CWait ..  ]
+[; ;i2cMaster.c: 98: }
+"98
+[e :UE 1050 ]
+}
+"106
+[v _I2CRead `(uc ~T0 @X0 1 ef ]
+{
+[; ;i2cMaster.c: 106: unsigned char I2CRead(void){
+[e :U _I2CRead ]
+[f ]
+"107
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;i2cMaster.c: 107: unsigned char temp;
+[; ;i2cMaster.c: 109: RCEN = 1;
+"109
+[e = _RCEN -> -> 1 `i `b ]
+[; ;i2cMaster.c: 110: while(!BF);
+"110
+[e $U 1055  ]
+[e :U 1056 ]
+[e :U 1055 ]
+[e $ ! _BF 1056  ]
+[e :U 1057 ]
+[; ;i2cMaster.c: 111: temp = SSPBUF;
+"111
+[e = _temp _SSPBUF ]
+[; ;i2cMaster.c: 112: I2CWait();
+"112
+[e ( _I2CWait ..  ]
+[; ;i2cMaster.c: 113: return temp;
+"113
+[e ) _temp ]
+[e $UE 1054  ]
+[; ;i2cMaster.c: 114: }
+"114
+[e :UE 1054 ]
+}
+"117
+[v _I2CReadOneByte `(uc ~T0 @X0 1 ef2`uc`uc ]
+{
+[; ;i2cMaster.c: 117: unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress) {
+[e :U _I2CReadOneByte ]
+[v _id `uc ~T0 @X0 1 r1 ]
+[v _registerAddress `uc ~T0 @X0 1 r2 ]
+[f ]
+[; ;i2cMaster.c: 118: I2CInit();
+"118
+[e ( _I2CInit ..  ]
+[; ;i2cMaster.c: 119: I2CStart();
+"119
+[e ( _I2CStart ..  ]
+[; ;i2cMaster.c: 120: I2CSend(id << 1);
+"120
+[e ( _I2CSend (1 -> << -> _id `i -> 1 `i `uc ]
+[; ;i2cMaster.c: 121: I2CSend(registerAddress);
+"121
+[e ( _I2CSend (1 _registerAddress ]
+[; ;i2cMaster.c: 122: I2CStop();
+"122
+[e ( _I2CStop ..  ]
+[; ;i2cMaster.c: 123: I2CStart();
+"123
+[e ( _I2CStart ..  ]
+[; ;i2cMaster.c: 124: I2CSend(id << 1 | 1);
+"124
+[e ( _I2CSend (1 -> | << -> _id `i -> 1 `i -> 1 `i `uc ]
+"125
+[v _out `uc ~T0 @X0 1 a ]
+[; ;i2cMaster.c: 125: unsigned char out = I2CRead();
+[e = _out ( _I2CRead ..  ]
+[; ;i2cMaster.c: 126: I2CNak();
+"126
+[e ( _I2CNak ..  ]
+[; ;i2cMaster.c: 127: I2CStop();
+"127
+[e ( _I2CStop ..  ]
+[; ;i2cMaster.c: 129: return out;
+"129
+[e ) _out ]
+[e $UE 1058  ]
+[; ;i2cMaster.c: 130: }
+"130
+[e :UE 1058 ]
+}
+"135
+[v _I2CReadNBytes `(v ~T0 @X0 1 ef4`i`*uc`uc`uc ]
+{
+[; ;i2cMaster.c: 135: void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress) {
+[e :U _I2CReadNBytes ]
+[v _n `i ~T0 @X0 1 r1 ]
+[v _data `*uc ~T0 @X0 1 r2 ]
+[v _id `uc ~T0 @X0 1 r3 ]
+[v _registerAddress `uc ~T0 @X0 1 r4 ]
+[f ]
+[; ;i2cMaster.c: 137: }
+"137
+[e :UE 1059 ]
 }

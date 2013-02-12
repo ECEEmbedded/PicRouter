@@ -82,4 +82,12 @@ Description: read 8-bit data from I2C bus
 */
 unsigned char I2CRead(void);
 
+//Send full write request
+unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress);
+
+/*
+ * Helper for a full I2C Read request
+ */
+void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress);
+
 #endif

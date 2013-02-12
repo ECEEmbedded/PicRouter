@@ -258,58 +258,8 @@ void main(void) {
     // This loop is responsible for "handing off" messages to the subroutines
     // that should get them.  Although the subroutines are not threads, but
     // they can be equated with the tasks in your task diagram if you
-    // structure them properly.
-
-    I2CInit();
-    I2CStart();
-
-        {
-            SSPBUF = 0x50 << 1;    /* Move data to SSPBUF */
-        while(BF);       /* wait till complete data is sent from buffer */
-        while ( ( SSPCON2 & 0x1F ) || ( SSPSTAT & 0x04 ) );
-        }
-
-        {
-            SSPBUF = 0x87;    /* Move data to SSPBUF */
-        while(BF);       /* wait till complete data is sent from buffer */
-        while ( ( SSPCON2 & 0x1F ) || ( SSPSTAT & 0x04 ) );
-        }
-
-        PEN = 1;         /* Stop condition enabled */
-        while(PEN);      /* Wait for stop condition to finish */
-                     /* PEN automatically cleared by hardware */
-
-        //Resend start
-        {
-             SEN = 1;         /* Start condition enabled */
-        while(SEN);      /* automatically cleared by hardware */
-                     /* wait for start condition to finish */
-        }
-
-        {
-            SSPBUF = 0x50 << 1 | 1;    /* Move data to SSPBUF */
-        while(BF);       /* wait till complete data is sent from buffer */
-        while ( ( SSPCON2 & 0x1F ) || ( SSPSTAT & 0x04 ) );
-        }
-
-
-
-        unsigned char temp;
-/* Reception works if transfer is initiated in read mode */
-        RCEN = 1;        /* Enable data reception */
-        while(!BF);      /* wait for buffer full */
-        temp = SSPBUF;   /* Read serial buffer and store in temp register */
-       while ( ( SSPCON2 & 0x1F ) || ( SSPSTAT & 0x04 ) );      /* wait to check any pending transfer */
-
-       ACKDT = 1;       /* Acknowledge data bit, 1 = NAK */
-        ACKEN = 1;       /* Ack data enabled */
-        while(ACKEN);    /* wait for ack data to send on bus */
-
-        PEN = 1;         /* Stop condition enabled */
-        while(PEN);      /* Wait for stop condition to finish */
-                     /* PEN automatically cleared by hardware */
-
-       
+    // structure them properly
+    unsigned char out = I2CReadOneByte(0x50, 0x30);
 
     while (1) {
 

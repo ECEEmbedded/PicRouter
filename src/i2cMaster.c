@@ -113,3 +113,25 @@ unsigned char I2CRead(void){
         return temp;     /* Return the read data from bus */
 }
 
+//Send full write request
+unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress) {
+    I2CInit();
+    I2CStart();
+    I2CSend(id << 1);
+    I2CSend(registerAddress);
+    I2CStop();
+    I2CStart();
+    I2CSend(id << 1 | 1);
+    unsigned char out = I2CRead();
+    I2CNak();
+    I2CStop();
+
+    return out;
+}
+
+/*
+ * Helper for a full I2C Read request
+ */
+void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress) {
+    
+}
