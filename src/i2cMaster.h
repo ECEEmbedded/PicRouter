@@ -90,4 +90,7 @@ unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress);
  */
 void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress);
 
+//Read one byte of data
+unsigned char I2CWriteOneByte(unsigned char id, unsigned char registerAddress, unsigned char data);
+
 #endif

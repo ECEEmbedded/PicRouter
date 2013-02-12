@@ -115,11 +115,10 @@ unsigned char I2CRead(void){
 
 //Send full write request
 unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress) {
-    I2CInit();
     I2CStart();
     I2CSend(id << 1);
     I2CSend(registerAddress);
-    I2CStop();
+   // I2CStop();
     I2CStart();
     I2CSend(id << 1 | 1);
     unsigned char out = I2CRead();
@@ -132,6 +131,26 @@ unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress) {
 /*
  * Helper for a full I2C Read request
  */
-void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress) {
+void I2CReadNBytes(int N, unsigned char *data, unsigned char id, unsigned char registerAddress) {
+    I2CStart();
+    I2CSend(id << 1);
+    I2CSend(registerAddress);
     
+    for (int i = 0; i < N; ++i) {
+   // I2CStop();
+    I2CStart();
+    I2CSend(id << 1 | 1);
+    data[i] = I2CRead();
+    }
+
+    I2CNak();
+    I2CStop();
+}
+
+unsigned char I2CWriteOneByte(unsigned char id, unsigned char registerAddress, unsigned char data) {
+    I2CStart();
+    I2CSend(id << 1);
+    I2CSend(registerAddress);
+    I2CSend(data);
+    I2CStop();
 }

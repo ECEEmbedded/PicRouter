@@ -259,8 +259,12 @@ void main(void) {
     // that should get them.  Although the subroutines are not threads, but
     // they can be equated with the tasks in your task diagram if you
     // structure them properly
-    unsigned char out = I2CReadOneByte(0x50, 0x30);
-
+    I2CInit();
+    unsigned char data[4];
+    //WriteOneByte(Id, Register, Data)
+    I2CWriteOneByte(0x50, 0x30, 0x22);
+    I2CReadNBytes(1, data, 0x50, 0x30);
+    
     while (1) {
 
 

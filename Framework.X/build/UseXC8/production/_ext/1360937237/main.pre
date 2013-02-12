@@ -9912,6 +9912,15 @@ void I2CSend(unsigned char dat);
 unsigned char I2CRead(void);
 
 
+unsigned char I2CReadOneByte(unsigned char id, unsigned char registerAddress);
+
+# 91
+void I2CReadNBytes(int n, unsigned char *data, unsigned char id, unsigned char registerAddress);
+
+
+unsigned char I2CWriteOneByte(unsigned char id, unsigned char registerAddress, unsigned char data);
+
+
 # 82 "../src/main.c"
 #pragma config WDTEN = OFF
 #pragma config PLLDIV = 3
@@ -10011,22 +10020,16 @@ enable_interrupts();
 
 # 262
 I2CInit();
-I2CStart();
-I2CSend(0x50 << 1);
-I2CSend(0x87);
-I2CStop();
-I2CStart();
-I2CSend(0x50 << 1 | 1);
-unsigned char out = I2CRead();
-I2CNak();
-I2CStop();
+unsigned char data[4];
+I2CWriteOneByte(0x50, 0x30, 0x22);
+I2CReadNBytes(1, data, 0x50, 0x30);
 
 while (1) {
 
-# 279
+# 273
 block_on_To_msgqueues();
 
-# 286
+# 280
 length = ToMainHigh_recvmsg(10, &msgtype, (void *) msgbuffer);
 if (length < 0) {
 
@@ -10051,7 +10054,7 @@ break;
 case 42:
 {
 
-# 320
+# 314
 start_i2c_slave_reply(ADCBufferLen, ADCbufferI2C);
 
 break;
@@ -10081,7 +10084,7 @@ break;
 case 50:
 {
 
-# 362
+# 356
 msgbuffer[3] = msgbuffer[0];
 msgbuffer[0] = 3;
 msgbuffer[1] = 1;
