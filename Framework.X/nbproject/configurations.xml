@@ -13,7 +13,6 @@
       <itemPath>../src/timer1_thread.h</itemPath>
       <itemPath>../src/uart_thread.h</itemPath>
       <itemPath>../src/user_interrupts.h</itemPath>
-      <itemPath>../src/adcHelper.h</itemPath>
       <itemPath>../src/driverStack.h</itemPath>
       <itemPath>../src/i2cMaster.h</itemPath>
     </logicalFolder>
@@ -33,7 +32,6 @@
       <itemPath>../src/timer1_thread.c</itemPath>
       <itemPath>../src/uart_thread.c</itemPath>
       <itemPath>../src/user_interrupts.c</itemPath>
-      <itemPath>../src/adcHelper.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -49,10 +47,10 @@
     <conf name="UseXC8" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F26J50</targetDevice>
+        <targetDevice>PIC18F2680</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>PICkit2PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.12</languageToolchainVersion>
         <platform>4</platform>
@@ -135,6 +133,13 @@
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
       </HI-TECH-LINK>
+      <PICkit2PlatformTool>
+        <property key="pk2settings.3state" value="false"/>
+        <property key="pk2settings.preserveee" value="false"/>
+        <property key="pk2settings.setvddvoltage" value=""/>
+        <property key="pk2settings.userpgmexec" value="true"/>
+        <property key="pk2settings.usetargetpower" value="false"/>
+      </PICkit2PlatformTool>
       <PICkit3PlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="Freeze Peripherals" value="true"/>

@@ -251,7 +251,7 @@ void main(void) {
     // Here is how it looks: printf("Hello\r\n");
 
     //Setup ad
-    adcInit();
+   // adcInit();
 
     // loop forever
     // This loop is responsible for "handing off" messages to the subroutines
@@ -259,7 +259,7 @@ void main(void) {
     // they can be equated with the tasks in your task diagram if you
     // structure them properly.
 
-    TRISC3 = 1;      /* SDA and SCL as input pin */
+        TRISC3 = 1;      /* SDA and SCL as input pin */
         TRISC4 = 1;      /* these pins can be configured either i/p or o/p */
         SSPSTAT |= 0x80; /* Slew rate disabled */
         SSPCON1 = 0x28;   /* SSPEN = 1, I2C Master mode, clock = FOSC/(4 * (SSPADD + 1)) */

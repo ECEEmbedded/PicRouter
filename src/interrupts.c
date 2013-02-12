@@ -98,12 +98,6 @@ void InterruptHandlerHigh() {
         // call whatever handler you want (this is "user" defined)
         timer0_int_handler();
     }
-
-    // Check for ADC interrupt
-    if (PIR1bits.ADIF) {
-        adcIntHandler();
-    }
-
     // here is where you would check other interrupt flags.
 
     // The *last* thing I do here is check to see if we can
