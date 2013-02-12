@@ -9,4 +9,5 @@
 ../src/uart_thread.h  \
 ../src/timer0_thread.h  \
 ../src/timer1_thread.h  \
-../src/adcHelper.h 
+../src/adcHelper.h  \
+../src/i2cMaster.h 

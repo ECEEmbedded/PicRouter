@@ -17,6 +17,7 @@
 #include "uart_thread.h"
 #include "timer1_thread.h"
 #include "timer0_thread.h"
+#include "i2cMaster.h"
 
 #ifdef __USE18F45J10
 // CONFIG1L
@@ -259,15 +260,8 @@ void main(void) {
     // they can be equated with the tasks in your task diagram if you
     // structure them properly.
 
-        TRISC3 = 1;      /* SDA and SCL as input pin */
-        TRISC4 = 1;      /* these pins can be configured either i/p or o/p */
-        SSPSTAT |= 0x80; /* Slew rate disabled */
-        SSPCON1 = 0x28;   /* SSPEN = 1, I2C Master mode, clock = FOSC/(4 * (SSPADD + 1)) */
-        SSPADD = 0x28;    /* 100Khz @ 4Mhz Fosc */
-
-        SEN = 1;         /* Start condition enabled */
-        while(SEN);      /* automatically cleared by hardware */
-                     /* wait for start condition to finish */
+    I2CInit();
+    I2CStart();
 
         {
             SSPBUF = 0x50 << 1;    /* Move data to SSPBUF */

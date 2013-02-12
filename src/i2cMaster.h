@@ -1,3 +1,19 @@
+#ifndef I2C_MASTER_H_
+#define I2C_MASTER_H_
+
+#include "adcHelper.h"
+#include "maindefs.h"
+#include <stdio.h>
+#ifndef __XC8
+#include <usart.h>
+#include <i2c.h>
+#include <timers.h>
+#else
+#include <plib/usart.h>
+#include <plib/i2c.h>
+#include <plib/timers.h>
+#endif
+
 /*
 Function: I2CInit
 Return:
@@ -65,3 +81,5 @@ Arguments:
 Description: read 8-bit data from I2C bus
 */
 unsigned char I2CRead(void);
+
+#endif

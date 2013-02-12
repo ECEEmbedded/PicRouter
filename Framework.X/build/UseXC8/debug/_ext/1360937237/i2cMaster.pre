@@ -1,0 +1,97 @@
+
+# 1 "../src/i2cMaster.c"
+
+# 7 "../src/i2cMaster.h"
+void I2CInit(void);
+
+# 15
+void I2CStart();
+
+# 23
+void I2CStop();
+
+# 30
+void I2CRestart();
+
+# 37
+void I2CAck();
+
+# 44
+void I2CNak();
+
+# 51
+void I2CWait();
+
+# 60
+void I2CSend(unsigned char dat);
+
+# 67
+unsigned char I2CRead(void);
+
+# 9 "../src/i2cMaster.c"
+void I2CInit(void){
+TRISC3 = 1;
+TRISC4 = 1;
+SSPSTAT |= 0x80;
+SSPCON = 0x28;
+SSPADD = 0x28
+}
+
+# 23
+void I2CStart(){
+SEN = 1;
+while(SEN);
+
+}
+
+# 35
+void I2CStop(){
+PEN = 1;
+while(PEN);
+
+}
+
+# 47
+void I2CRestart(){
+RSEN = 1;
+while(RSEN);
+}
+
+# 58
+void I2CAck(){
+ACKDT = 0;
+ACKEN = 1;
+while(ACKEN);
+}
+
+# 70
+void I2CNak(){
+ACKDT = 1;
+ACKEN = 1;
+while(ACKEN);
+}
+
+# 82
+void I2CWait(){
+while ( ( SSPCON2 & 0x1F ) || ( SSPSTAT & 0x04 ) );
+
+}
+
+# 94
+void I2CSend(unsigned char dat){
+SSPBUF = dat;
+while(BF);
+I2CWait();
+}
+
+# 106
+unsigned char I2CRead(void){
+unsigned char temp;
+
+RCEN = 1;
+while(!BF);
+temp = SSPBUF;
+I2CWait();
+return temp;
+}
+

@@ -10,8 +10,8 @@ void I2CInit(void){
         TRISC3 = 1;      /* SDA and SCL as input pin */
         TRISC4 = 1;      /* these pins can be configured either i/p or o/p */
         SSPSTAT |= 0x80; /* Slew rate disabled */
-        SSPCON = 0x28;   /* SSPEN = 1, I2C Master mode, clock = FOSC/(4 * (SSPADD + 1)) */
-        SSPADD = 0x28    /* 100Khz @ 4Mhz Fosc */
+        SSPCON1 = 0x28;   /* SSPEN = 1, I2C Master mode, clock = FOSC/(4 * (SSPADD + 1)) */
+        SSPADD = 0x28;    /* 100Khz @ 4Mhz Fosc */
 }
 
 /*
